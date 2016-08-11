@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tetrified.Engine", "src\Tet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tetrified.Console", "src\Tetrified.Console\Tetrified.Console.csproj", "{CF7341BE-727E-4BA3-9E77-059F02033914}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tetrified.Desktop", "src\Tetrified.Desktop\Tetrified.Desktop.csproj", "{DC3D1C75-DD9C-40CA-94DC-F5D658F028E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CF7341BE-727E-4BA3-9E77-059F02033914}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF7341BE-727E-4BA3-9E77-059F02033914}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF7341BE-727E-4BA3-9E77-059F02033914}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC3D1C75-DD9C-40CA-94DC-F5D658F028E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC3D1C75-DD9C-40CA-94DC-F5D658F028E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC3D1C75-DD9C-40CA-94DC-F5D658F028E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC3D1C75-DD9C-40CA-94DC-F5D658F028E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -31,7 +31,7 @@ namespace Tetrified.ConsoleApp
                         engine.Game.MoveActiveTetromino(Direction.Right);
                         break;
                     case ConsoleKey.UpArrow:
-                        engine.Game.RotateActiveTetromino(Direction.Down);
+                        engine.Game.RotateActiveTetromino();
                         break;
                     case ConsoleKey.DownArrow:
                         engine.Game.MoveActiveTetromino(Direction.Down);

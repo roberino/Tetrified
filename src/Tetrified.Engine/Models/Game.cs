@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using UniversalGrid;
+using UniversalGrid.Events;
 using UniversalGrid.Geometry;
 
 namespace Tetrified.Engine.Models
@@ -12,8 +13,28 @@ namespace Tetrified.Engine.Models
         public Game(int width = 10, int height = 22)
         {
             Board = new UniversalGrid<char>(width, height);
+
+            Board.ItemMoved += OnMove;
             
             _generator = new TetrominoGenerator();
+        }
+
+        private void OnMove(object sender, ObjectEvent<ISpatial2DThing<char>> e)
+        {
+            var grid = (UniversalGrid<char>)sender;
+
+            var completedRows = grid.Rows.Where(r => r.All(c => grid.GetObjectsOverlapping(c).Any())).ToList();
+
+            foreach(var row in completedRows)
+            {
+                var y = row.First().Y;
+                var objectsOnRow = row.SelectMany(r => grid.GetObjectsOverlapping(r)).Distinct().ToList();
+
+                foreach(var obj in objectsOnRow)
+                {
+                    obj.Modify(obj.Positions.Where(p => p.Y != y));
+                }
+            }
         }
 
         public UniversalGrid<char> Board { get; private set; }
@@ -39,7 +60,7 @@ namespace Tetrified.Engine.Models
             return false;
         }
 
-        public bool RotateActiveTetromino(Direction direction)
+        public bool RotateActiveTetromino()
         {
             try
             {
