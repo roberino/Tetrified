@@ -19,6 +19,11 @@ namespace Tetrified.Engine.Models
             _generator = new TetrominoGenerator();
         }
 
+        internal void Shutdown()
+        {
+            _generator.Timer.Shutdown();
+        }
+
         private void OnMove(object sender, ObjectEvent<ISpatial2DThing<char>> e)
         {
             var grid = (UniversalGrid<char>)sender;
@@ -33,6 +38,11 @@ namespace Tetrified.Engine.Models
                 foreach(var obj in objectsOnRow)
                 {
                     obj.Modify(obj.Positions.Where(p => p.Y != y));
+                }
+
+                foreach (var obj in grid.AllObjects.Where(o => o.TopLeft.Y < y))
+                {
+                    obj.Move(Direction.Down);
                 }
             }
         }

@@ -18,7 +18,7 @@ namespace Tetrified.Engine.Models
         }
 
         public TimeSpan IntervalSpeed { get; set; }
-
+        
         public void RunUntil(Func<bool> operation)
         {
             var task = new RunTask(operation, IntervalSpeed);
@@ -33,6 +33,25 @@ namespace Tetrified.Engine.Models
             _tasks.Add(task);
 
             task.Start();
+        }
+
+        public void Shutdown()
+        {
+            foreach(var task in _tasks)
+            {
+                // task.Running = false;
+
+                try
+                {
+                    task.Thread.Abort();
+                }
+                catch { }
+            }
+        }
+
+        public void Dispose()
+        {
+            Shutdown();
         }
 
         private class RunTask
@@ -50,7 +69,7 @@ namespace Tetrified.Engine.Models
                     t.Timer.Start();
                     t.Running = true;
 
-                    while (true)
+                    while (t.Running)
                     {
                         //if (t.LastRun < (Timer.Elapsed - Interval))
                         //{

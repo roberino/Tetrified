@@ -19,6 +19,11 @@ namespace Tetrified.Engine
             Cycle();
         }
 
+        public void Shutdown()
+        {
+            Game.Shutdown();
+        }
+
         private void Cycle()
         {
             if (Game.State == GameState.Uninitialised || Game.State == GameState.Running)

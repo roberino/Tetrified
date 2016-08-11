@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using UniversalGrid;
@@ -23,7 +15,7 @@ namespace Tetrified.Desktop
     /// </summary>
     public partial class MainWindow : Window
     {
-        const double unitSize = 20;
+        const double unitSize = 26;
 
         private bool _closing;
 
@@ -39,13 +31,18 @@ namespace Tetrified.Desktop
 
             foreach(var cell in _gameEngine.Game.Board.Rows.SelectMany(r => r))
             {
-                main.Children.Add(new Border()
+                var border = new Rectangle()
                 {
-                    BorderThickness = new Thickness(1),
-                    BorderBrush = new SolidColorBrush(Colors.Black),
-                    Width = cell.X * unitSize,
-                    Height = cell.Y * unitSize
-                });
+                    Stroke = new SolidColorBrush(Colors.Black),
+                    StrokeThickness = 1,
+                    Width = unitSize,
+                    Height = unitSize
+                };
+
+                main.Children.Add(border);
+
+                Canvas.SetLeft(border, cell.X * unitSize);
+                Canvas.SetTop(border, cell.Y * unitSize);
             }
 
             base.KeyDown += OnKey;
@@ -56,6 +53,7 @@ namespace Tetrified.Desktop
         protected override void OnClosing(CancelEventArgs e)
         {
             _closing = true;
+            _gameEngine.Shutdown();
             base.OnClosing(e);
         }
 

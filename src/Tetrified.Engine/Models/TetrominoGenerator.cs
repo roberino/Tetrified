@@ -16,6 +16,14 @@ namespace Tetrified.Engine.Models
             _timer = timer ?? new DefaultTimer(TimeSpan.FromSeconds(1));
         }
 
+        public ITimer Timer
+        {
+            get
+            {
+                return _timer;
+            }
+        }
+
         public Tetromino Generate()
         {
             var x = _rnd.Next(_shapes.Length);
