@@ -1,1 +1,3 @@
-﻿# Tetris "like" game
+﻿# Block "like" game
+
+Playing with different UI technologies

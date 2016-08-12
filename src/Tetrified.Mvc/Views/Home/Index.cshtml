@@ -1,0 +1,17 @@
+﻿@model UniversalGrid.UniversalGrid<char>
+
+@using UniversalGrid.Formatting
+
+<p>
+    <a href="/?move=left">Left</a> | <a href="/?move=right">Right</a>
+</p>
+
+@{
+    var svg = Model.ToSvg();
+    svg.Root.SetAttributeValue("height", 1200);
+    svg.Root.SetAttributeValue("width", 600);
+
+    <text>
+        @Html.Raw(svg);
+    </text>
+}

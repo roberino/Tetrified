@@ -12,7 +12,11 @@ namespace Tetrified.Engine.Models
 
         public Game(int width = 10, int height = 22)
         {
-            Board = new UniversalGrid<char>(width, height);
+            Board = new UniversalGrid<char>(width, height)
+            {
+                 UnitHeight = 50,
+                 UnitWidth = 50
+            };
 
             Board.ItemMoved += OnMove;
             

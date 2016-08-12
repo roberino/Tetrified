@@ -25,7 +25,7 @@ namespace Tetrified.Engine.Models
 
             var inactive = _tasks.Where(t => !t.Running).ToList();
 
-            foreach(var t in inactive)
+            foreach (var t in inactive)
             {
                 _tasks.Remove(t);
             }
@@ -37,16 +37,12 @@ namespace Tetrified.Engine.Models
 
         public void Shutdown()
         {
-            foreach(var task in _tasks)
+            foreach (var task in _tasks)
             {
-                // task.Running = false;
-
-                try
-                {
-                    task.Thread.Abort();
-                }
-                catch { }
+                task.Abort();
             }
+
+            _tasks.Clear();
         }
 
         public void Dispose()
@@ -89,6 +85,24 @@ namespace Tetrified.Engine.Models
                     t.Running = false;
                     t.Timer.Stop();
                 });
+            }
+
+            public void Abort()
+            {
+                Running = false;
+
+                Thread.Sleep(100);
+
+                if (Thread.IsAlive)
+                {
+                    try
+                    {
+                        Thread.Abort();
+                    }
+                    catch
+                    {
+                    }
+                }
             }
 
             public void Start()

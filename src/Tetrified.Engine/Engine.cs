@@ -6,6 +6,8 @@ namespace Tetrified.Engine
 {
     public class Engine
     {
+        private bool _isRunning;
+
         public Engine(Game game = null)
         {
             Game = game ?? new Game();
@@ -14,13 +16,24 @@ namespace Tetrified.Engine
 
         public Game Game { get; private set; }
 
+        public bool IsRunning { get { return _isRunning; } }
+
         public void Start()
         {
+            _isRunning = true;
+
             Cycle();
+        }
+
+        public void Restart()
+        {
+            _isRunning = false;
         }
 
         public void Shutdown()
         {
+            _isRunning = false;
+
             Game.Shutdown();
         }
 
