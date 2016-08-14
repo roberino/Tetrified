@@ -102,8 +102,9 @@
       <Private>True</Private>
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="UniversalGrid">
-      <HintPath>..\..\packages\UniversalGrid.2.0.0-beta\lib\net461\UniversalGrid.dll</HintPath>
+    <Reference Include="UniversalGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\UniversalGrid.2.1.0\lib\net461\UniversalGrid.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>

@@ -26,6 +26,12 @@ namespace Tetrified.Mvc.Controllers
                 case "right":
                     _engine.Game.MoveActiveTetromino(UniversalGrid.Geometry.Direction.Right);
                     break;
+                case "down":
+                    _engine.Game.MoveActiveTetromino(UniversalGrid.Geometry.Direction.Down);
+                    break;
+                case "rotate":
+                    _engine.Game.RotateActiveTetromino();
+                    break;
             }
 
             if (restart || !string.IsNullOrEmpty(move))

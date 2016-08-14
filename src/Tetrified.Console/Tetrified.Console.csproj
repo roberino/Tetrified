@@ -43,7 +43,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="UniversalGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\UniversalGrid.2.0.0-beta\lib\net461\UniversalGrid.dll</HintPath>
+      <HintPath>..\..\packages\UniversalGrid.2.1.0\lib\net461\UniversalGrid.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
